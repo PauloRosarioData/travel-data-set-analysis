@@ -1,0 +1,49 @@
+MONTH,COUNTRY,PRODUCT,TRANSACTION
+January,United Kingdom,AIR," 3,566.3 "
+February,United Kingdom,AIR," 3,019.4 "
+March,United Kingdom,AIR," 2,997.4 "
+April,United Kingdom,AIR," 3,292.7 "
+May,United Kingdom,AIR," 3,116.3 "
+June,United Kingdom,AIR," 2,326.4 "
+July,United Kingdom,AIR," 2,297.9 "
+August,United Kingdom,AIR," 2,606.7 "
+September,United Kingdom,AIR," 2,579.0 "
+October,United Kingdom,AIR," 2,771.9 "
+November,United Kingdom,AIR," 2,058.1 "
+December,United Kingdom,AIR," 1,342.6 "
+January,United Kingdom,RAIL," 5,044.6 "
+February,United Kingdom,RAIL," 5,566.1 "
+March,United Kingdom,RAIL," 4,876.6 "
+April,United Kingdom,RAIL," 4,134.8 "
+May,United Kingdom,RAIL," 4,922.2 "
+June,United Kingdom,RAIL," 4,198.9 "
+July,United Kingdom,RAIL," 4,515.4 "
+August,United Kingdom,RAIL," 3,652.3 "
+September,United Kingdom,RAIL," 4,768.0 "
+October,United Kingdom,RAIL," 5,970.5 "
+November,United Kingdom,RAIL," 6,130.8 "
+December,United Kingdom,RAIL," 2,763.8 "
+January,United Kingdom,HOTEL," 5,316.0 "
+February,United Kingdom,HOTEL," 4,768.0 "
+March,United Kingdom,HOTEL," 4,382.9 "
+April,United Kingdom,HOTEL," 4,731.9 "
+May,United Kingdom,HOTEL," 4,657.3 "
+June,United Kingdom,HOTEL," 3,468.5 "
+July,United Kingdom,HOTEL," 3,362.1 "
+August,United Kingdom,HOTEL," 3,515.7 "
+September,United Kingdom,HOTEL," 4,208.2 "
+October,United Kingdom,HOTEL," 4,188.4 "
+November,United Kingdom,HOTEL," 3,402.7 "
+December,United Kingdom,HOTEL," 1,929.0 "
+January,United Kingdom,CAR, 191.8 
+February,United Kingdom,CAR, 155.7 
+March,United Kingdom,CAR, 141.0 
+April,United Kingdom,CAR, 163.2 
+May,United Kingdom,CAR, 196.7 
+June,United Kingdom,CAR, 123.0 
+July,United Kingdom,CAR, 124.6 
+August,United Kingdom,CAR, 126.5 
+September,United Kingdom,CAR, 145.1 
+October,United Kingdom,CAR, 156.4 
+November,United Kingdom,CAR, 123.2 
+December,United Kingdom,CAR, 73.8 
