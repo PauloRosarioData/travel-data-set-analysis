@@ -2,8 +2,8 @@ create or replace table amex_data_set.T001_data_clean as ( with data_load as (SE
   cast(TRANSACTION_DATE as date) as TRANSACTION_DATE,
   cast(country as string) as country,
   cast(product as string) as product,
-  cast(TRANSACTION_CNT as numeric) as TRANSACTION_CNT,
-  cast(VALUE as numeric) as VALUE
+  safe_cast(TRANSACTION_CNT as numeric) as TRANSACTION_CNT,
+  safe_cast(VALUE as numeric) as VALUE
 FROM
   `amex_data_set.clienttrends`)
 
