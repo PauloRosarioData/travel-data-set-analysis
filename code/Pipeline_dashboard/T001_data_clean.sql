@@ -8,8 +8,8 @@ create or replace table amex_data_set.T001_data_clean as (
   ---because of the excel formating of the source file
   ---there might be a comma used as a thousand mark
   --we also have 0 or missing values coded as "-"
-  CAST(REPLACE(REPLACE(VALUE, '-', '0'), ',', '') AS DECIMAL) as transaction_value
-FROM
+  safe_cast(IF(VALUE = '-', 0, safe_cast(replace(VALUE,",","") as decimal)) as decimal) AS transaction_value
+  FROM
   `amex_data_set.clienttrends`),
 
   flagging_errors_in_dataset as (
