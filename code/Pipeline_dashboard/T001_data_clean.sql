@@ -3,7 +3,7 @@ create or replace table amex_data_set.T001_data_clean as (
    *,
   cast(TRANSACTION_DATE as date) as tr_date,
   cast(country as string) as country_name,
-  cast(product as string) as product_type,
+  cast(if(product in ("Air", "Hotel", "Car", "Rail"),product, "Other") as string) as product_type,
   safe_cast(TRANSACTION_CNT as DECIMAL) as transaction_count,
   ---because of the excel formating of the source file
   ---there might be a comma used as a thousand mark
