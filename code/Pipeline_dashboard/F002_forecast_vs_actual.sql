@@ -32,7 +32,9 @@ FROM
 
   SELECT pt.*,a.total_volume/1000 as actual, a.actual_UK_only/1000 as actual_UK_only,
   a.UK_transactions as UK_transactions,a.total_transactions as total_transactions,
-  f.TRANSACTION as Forecast from producing_table pt
+  f.TRANSACTION as Forecast,
+  safe_divide(UK_transactions,f.TRANSACTION) as actual_vs_forecast
+   from producing_table pt
 
   left join forecast_data f
   on pt.Period =  f.Period
