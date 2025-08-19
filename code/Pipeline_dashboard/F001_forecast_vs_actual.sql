@@ -3,22 +3,25 @@ create or replace table amex_data_set.F001_forecast_vs_actual  as (
   with dataset as (
   SELECT
     transaction_date,
-    product_type,
-    sum(daily_transaction_value) as volume
+    upper(product_type) as product_type,
+    sum(if(country_code="UK",daily_transaction_value,0)) as UK_volume,
+    sum(daily_transaction_value) as total_volume,
+    sum(if(country_code="UK",daily_transaction_count,0)) as UK_transactions,
+    sum(daily_transaction_count) as total_transactions
   FROM `amex_data_set.T002_data_filters`
-  where
-    country_code = "UK"
-    and transaction_date >= "2025-01-01"
   group by 1, 2
 )
 
 SELECT
-  extract(month from transaction_date) as month,
-  FORMAT_DATE('%B', transaction_date) as month_name,
+  DATE_TRUNC(transaction_date, MONTH) AS month,
   product_type,
-  sum(volume) as actual
+  sum(total_volume) as total_volume,
+  sum(UK_volume) as actual_UK_only,
+  sum(UK_transactions) as UK_transactions,
+  sum(total_transactions) as total_transactions,
+
 from dataset
 group by
-  1,2,3
+  1,2
 ORDER BY
-  1,3);
+  1);
