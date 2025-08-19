@@ -1,0 +1,1 @@
+SELECT extract(DAYOFWEEK from transaction_date), product_type, avg(daily_transaction_count) FROM `intrepid-league-444609-g4.amex_data_set.T002_data_filters` group by 1,2

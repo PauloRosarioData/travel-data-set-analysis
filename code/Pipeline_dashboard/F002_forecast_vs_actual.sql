@@ -28,7 +28,9 @@ FROM
 
   SELECT p as Period, PRODUCT from all_dates cross join all_products
   group by 1,2
-  order by 1,2)
+  order by 1,2),
+
+  merging_datasets as (
 
   SELECT pt.*,a.total_volume/1000 as actual, a.actual_UK_only/1000 as actual_UK_only,
   a.UK_transactions as UK_transactions,a.total_transactions as total_transactions,
@@ -45,4 +47,10 @@ FROM
   and pt.Product = a.product_type
 
 
-  order by Period desc);
+  order by Period desc)
+  
+  SELECT *,
+  (Forecast / LAG(UK_transactions, 12) OVER (PARTITION BY Product ORDER BY Period)) - 1 AS YoY_forecast,
+  (UK_transactions / LAG(UK_transactions, 12) OVER (PARTITION BY Product ORDER BY Period)) - 1 AS YoY_actual 
+  
+  from merging_datasets);
