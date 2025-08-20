@@ -46,7 +46,9 @@ CREATE OR REPLACE TABLE amex_data_set.T002_data_filters AS
       generated_date,
       dd.country_code,
       dd.product_type
-  )
+  ),
+
+  merging_datasets as (
   -- Step 3: LEFT JOIN the generated combinations with the actual base_data
   -- to ensure all dates for all dimensions are present, filling missing transaction values with 0
   SELECT
@@ -89,5 +91,10 @@ CREATE OR REPLACE TABLE amex_data_set.T002_data_filters AS
   ORDER BY
     apc.country_code,
     apc.product_type,
-    apc.transaction_date
+    apc.transaction_date)
+
+    SELECT *,
+    safe_divide(m28day_total_transaction_value,lag(m28day_total_transaction_value, 365) over (partition by country_code, product_type order by transaction_date))-1 as m28day_total_transaction_value_YoY,
+    safe_divide(m28day_total_transaction_count,lag(m28day_total_transaction_count, 365) over (partition by country_code, product_type order by transaction_date))-1 as m28day_total_transaction_count_YoY
+    from merging_datasets
 );
