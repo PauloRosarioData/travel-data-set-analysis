@@ -48,6 +48,8 @@ create or replace table amex_data_set.T001_data_clean as (
 
   SELECT *, 
   ---if a record is captured by any of the three previous check will get a flag for deletion
-  GREATEST(wrong_transaction_cnt, wrong_transaction_value, wrong_outlier_value) AS wrong_record
+  GREATEST(wrong_transaction_cnt, wrong_transaction_value, wrong_outlier_value) AS wrong_record,
+  GREATEST(wrong_transaction_cnt, wrong_transaction_value, wrong_outlier_value) AS ok_record,
+
   from flagging_errors_in_dataset
   );
